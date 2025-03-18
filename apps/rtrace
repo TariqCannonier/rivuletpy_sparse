@@ -4,7 +4,7 @@ import argparse
 import time
 from rivuletpy.trace import R2Tracer
 from rivuletpy.utils.io import loadimg, crop, swc2world, swc2vtk
-from scipy.ndimage.interpolation import zoom
+from scipy.ndimage import zoom
 import SimpleITK as sitk
 from rivuletpy.trace import estimate_radius
 
