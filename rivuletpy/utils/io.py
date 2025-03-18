@@ -34,15 +34,26 @@ def loadimg(file, target_resolution):
     return img
 
 
-def loadtiff3d(filepath):
+# def loadtiff3d(filepath):
+#     """Load a tiff file into 3D numpy array"""
+#     from libtiff import TIFF
+#     tiff = TIFF.open(filepath, mode='r')
+#     stack = []
+#     for sample in tiff.iter_images():
+#         stack.append(np.rot90(np.fliplr(np.flipud(sample))))
+#     out = np.dstack(stack)
+#     tiff.close()
+
+#     return out
+
+def loadtiff3d(filepath): 
     """Load a tiff file into 3D numpy array"""
-    from libtiff import TIFF
-    tiff = TIFF.open(filepath, mode='r')
-    stack = []
-    for sample in tiff.iter_images():
-        stack.append(np.rot90(np.fliplr(np.flipud(sample))))
-    out = np.dstack(stack)
-    tiff.close()
+    import tifffile as TIFF
+
+    tiff = TIFF.imread(filepath)
+    out = np.transpose(tiff, (1,2,0))
+    # stack = []
+    # for sample in tiff.iter_images
 
     return out
 
